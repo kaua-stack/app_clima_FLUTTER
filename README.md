@@ -1,17 +1,18 @@
-# atividade_clima
+# Atividade ClimaApp
 
-A new Flutter project.
+## Qual a diferença entre Expanded e Flexible?
 
-## Getting Started
+Expanded ocupa todo o espaço disponível dentro de uma Row ou Column.
 
-This project is a starting point for a Flutter application.
+Flexible também ocupa espaço, mas permite mais flexibilidade no tamanho do widget.
 
-A few resources to get you started if this is your first Flutter project:
+## O que acontece quando possuem flex diferente?
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+O espaço é dividido de acordo com o valor do flex.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Exemplo:
+
+flex: 1
+flex: 2
+
+O widget com flex 2 ocupará o dobro de espaço do widget com flex 1.

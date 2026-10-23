@@ -1,5 +1,5 @@
-
 import 'package:atividade_clima/screen/clima_atual.dart';
+import 'package:atividade_clima/screen/detalhes_avancado.dart';
 import 'package:atividade_clima/screen/previsao_semana.dart';
 import 'package:flutter/material.dart';
 
@@ -33,28 +33,45 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("ClimaApp"),
       ),
-      body: Column(
-        children: [
-          ElevatedButton(
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => const ClimaAtual(),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            ElevatedButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const ClimaAtual(),
+                ),
               ),
+              child: const Text("Clima atual"),
             ),
-            child: const Text("Clima atual"),
-          ),
 
-          ElevatedButton(
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => const PrevisaoSemana(),
+            const SizedBox(height: 10),
+
+            ElevatedButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const PrevisaoSemana(),
+                ),
               ),
+              child: const Text("Previsão da semana"),
             ),
-            child: const Text("Previsão da semana"),
-          ),
-        ],
+
+            const SizedBox(height: 10),
+
+            ElevatedButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const DetalhesAvancadosScreen(),
+                ),
+              ),
+              child: const Text("Detalhes avançados"),
+            ),
+          ],
+        ),
       ),
     );
   }

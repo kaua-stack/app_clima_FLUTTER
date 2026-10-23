@@ -1,4 +1,5 @@
-import 'package:atividade_clima/widgets/item_detalhe.dart';
+import 'package:atividade_clima/widgets/titulo_secao.dart';
+
 import 'package:flutter/material.dart';
  
 class WidgetsLayout extends StatelessWidget {

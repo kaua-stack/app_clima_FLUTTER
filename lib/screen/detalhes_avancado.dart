@@ -1,5 +1,6 @@
 import 'package:atividade_clima/widgets/titulo_secao.dart';
 import 'package:flutter/material.dart';
+
 class DetalhesAvancadosScreen extends StatelessWidget {
   const DetalhesAvancadosScreen({super.key});
 
@@ -12,13 +13,15 @@ class DetalhesAvancadosScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-
           // ALERTAS
           const TituloSecao(titulo: 'Alertas'),
 
           Card(
             child: ListTile(
-              leading: const Icon(Icons.warning, color: Colors.orange),
+              leading: const Icon(
+                Icons.warning,
+                color: Colors.orange,
+              ),
               title: const Text('Chuva forte'),
               subtitle: const Text(
                 'Previsto para hoje a partir das 18h',
@@ -29,7 +32,10 @@ class DetalhesAvancadosScreen extends StatelessWidget {
 
           Card(
             child: ListTile(
-              leading: const Icon(Icons.cloud, color: Colors.blue),
+              leading: const Icon(
+                Icons.cloud,
+                color: Colors.blue,
+              ),
               title: const Text('Frente fria'),
               subtitle: const Text(
                 'Temperaturas em queda',
@@ -48,7 +54,6 @@ class DetalhesAvancadosScreen extends StatelessWidget {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             children: const [
-
               Card(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -102,9 +107,8 @@ class DetalhesAvancadosScreen extends StatelessWidget {
 
           Stack(
             children: [
-
               Image.network(
-                'https://images.unsplash.com/photo-1501973801540-537f08ccae7b',
+                'https://picsum.photos/800/400',
                 height: 200,
                 width: double.infinity,
                 fit: BoxFit.cover,
@@ -144,14 +148,19 @@ class DetalhesAvancadosScreen extends StatelessWidget {
             spacing: 8,
             runSpacing: 8,
             children: const [
-
               Chip(
-                avatar: Icon(Icons.warning, size: 18),
+                avatar: Icon(
+                  Icons.warning,
+                  size: 18,
+                ),
                 label: Text('Chuva forte'),
               ),
 
               Chip(
-                avatar: Icon(Icons.sunny, size: 18),
+                avatar: Icon(
+                  Icons.sunny,
+                  size: 18,
+                ),
                 label: Text('UV alto'),
               ),
 

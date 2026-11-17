@@ -1,19 +1,36 @@
 import 'package:flutter/material.dart';
- 
+
 class Formulario extends StatefulWidget {
-  const new({super.key});
- 
+  const Formulario({super.key});
+
   @override
   State<Formulario> createState() => _FormularioState();
 }
- 
+
 class _FormularioState extends State<Formulario> {
   bool entrar = true;
- 
+  bool ocultarSenha = true;
+  bool ocultarConfirmarSenha = true;
+
+  InputDecoration getInputDecoration(String label) {
+    return InputDecoration(
+      labelText: label,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 12,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Formulários')),
+      appBar: AppBar(
+        title: const Text('Formulários'),
+      ),
       body: Form(
         child: Center(
           child: Padding(
@@ -24,31 +41,78 @@ class _FormularioState extends State<Formulario> {
                   Visibility(
                     visible: !entrar,
                     child: TextFormField(
-                      decoration: InputDecoration(label: Text("nome")),
+                      decoration: getInputDecoration('Nome'),
                     ),
                   ),
- 
+
+                  if (!entrar) const SizedBox(height: 16),
+
                   TextFormField(
-                    decoration: InputDecoration(label: Text('E-Mail')),
+                    decoration: getInputDecoration('E-Mail'),
                   ),
+
+                  const SizedBox(height: 16),
+
+                  // CAMPO SENHA
                   TextFormField(
-                    decoration: InputDecoration(label: Text('Senha')),
-                    obscureText: true,
+                    decoration: getInputDecoration('Senha').copyWith(
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          ocultarSenha
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            ocultarSenha = !ocultarSenha;
+                          });
+                        },
+                      ),
+                    ),
+                    obscureText: ocultarSenha,
                   ),
+
                   Visibility(
                     visible: !entrar,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        label: Text('confirmar senha'),
-                      ),
-                      obscureText: true,
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 16),
+
+                        // CAMPO CONFIRMAR SENHA
+                        TextFormField(
+                          decoration:
+                              getInputDecoration(
+                                'Confirmar Senha',
+                              ).copyWith(
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    ocultarConfirmarSenha
+                                        ? Icons.visibility_off
+                                        : Icons.visibility,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      ocultarConfirmarSenha =
+                                          !ocultarConfirmarSenha;
+                                    });
+                                  },
+                                ),
+                              ),
+                          obscureText: ocultarConfirmarSenha,
+                        ),
+                      ],
                     ),
                   ),
-                  SizedBox(height: 32),
+
+                  const SizedBox(height: 32),
+
                   ElevatedButton(
                     onPressed: () {},
-                    child: Text((entrar) ? 'Entrar' : 'Cadastrar'),
+                    child: Text(
+                      entrar ? 'Entrar' : 'Cadastrar',
+                    ),
                   ),
+
                   TextButton(
                     onPressed: () {
                       setState(() {
@@ -56,7 +120,7 @@ class _FormularioState extends State<Formulario> {
                       });
                     },
                     child: Text(
-                      (entrar)
+                      entrar
                           ? 'Ainda não tem uma conta? Realizar o cadastro.'
                           : 'Já possui uma conta? Entre.',
                     ),
@@ -70,4 +134,3 @@ class _FormularioState extends State<Formulario> {
     );
   }
 }
- 
